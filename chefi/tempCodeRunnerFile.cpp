@@ -1,0 +1,1 @@
+ // return max(diff,max(diffmin,diffmax));
