@@ -1,0 +1,10 @@
+
+		
+First (isSafe):
+	Time Complexity   --> O(n × n!)	
+    Space Complexity  --> O(n^2)
+
+
+Optimized (booleans):	
+    Time Complexity   --> O(n!)	
+    Space Complexity  --> O(n^2)
