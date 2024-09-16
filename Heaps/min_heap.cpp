@@ -15,14 +15,18 @@ Space Complexity (SC):
 // MinHeap class definition
 class MinHeap
 {
-    int *arr; // Pointer to array to store the heap
-    int size; // Current size of the heap
-    int max_size; // Maximum size of the heap
+    int *arr;      // Pointer to array to store the heap
+    int size;      // Current size of the heap
+    int max_size;  // Maximum size of the heap
 
 public:
     // Constructor to initialize heap with a given max size
     MinHeap(int max_size)
     {
+        if (max_size < 1)
+        {
+            throw invalid_argument("Max size should be at least 1.");
+        }
         this->max_size = max_size;
         arr = new int[max_size];
         size = 0;
@@ -72,6 +76,9 @@ public:
     // Heapify a subtree rooted at the given index
     void Heapify(int index)
     {
+        if (size == 0)
+            return;  // No need to heapify if the heap is empty
+
         int smallest = index;
         int left = 2 * index + 1;
         int right = 2 * index + 2;
@@ -108,10 +115,7 @@ public:
         size--;
 
         // Heapify down from the root to restore heap property
-        if (size > 0)
-        {
-            Heapify(0);
-        }
+        Heapify(0);  // Always heapify after reducing size
     }
 };
 
@@ -126,14 +130,14 @@ int main()
     h.insert(13);
     h.insert(10);
 
-    h.print(); 
+    h.print();
     h.delete_root();
 
-    h.print(); 
+    h.print();
     h.delete_root();
 
-    h.print(); 
+    h.print();
     h.delete_root();
-    
+
     return 0;
 }
